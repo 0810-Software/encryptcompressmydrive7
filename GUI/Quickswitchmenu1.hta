@@ -1,0 +1,51 @@
+<HTML>
+    <HEAD>
+        <HTA:APPLICATION
+  APPLICATIONNAME="ecmd7_FT-Quickswitch"
+  ID="ecmd7_FT-Quickswitch"
+  VERSION="0.1"
+  BORDER="dialog"
+  BORDERSTYLE="static"
+  ICON="../img/iconFT1.ico"
+  SCROLL="auto"
+  SINGLEINSTANCE="yes"
+  WINDOWSTATE="maximize"
+  CONTEXTMENU="no"
+  NAVIGABLE="yes"
+  SELECTION="no"/>
+
+        <TITLE>ecmd7 formatting tool - Please select a drive</TITLE>
+
+        <SCRIPT language="Javascript">
+            function closeHTA(sendOutput){
+                if (sendOutput){
+                    (new ActiveXObject('Scripting.FileSystemObject'))
+                        .GetStandardStream(1)
+                        .WriteLine(
+                            document.getElementById('inputbox').value
+                        );
+                };
+                window.close();
+            }
+        </SCRIPT>
+        <SCRIPT language="vbscript">
+        Sub Create_new_account
+        Set objShell = CreateObject("WScript.Shell")
+        objShell.Run("Create_new_account.hta")
+        End Sub
+        </SCRIPT>
+    </HEAD>
+
+    <BODY> <center>
+<img src="../img/logoFT1.png">
+<p>Do you want to quickformat?</p>
+
+<SELECT id = "inputbox" >
+<OPTION VALUE="0">No</OPTION>
+<OPTION VALUE="1">Yes</OPTION>
+</SELECT>
+
+<button onclick="closeHTA(true);">Start formatting</button><br>
+</center></BODY>
+
+</HTML>

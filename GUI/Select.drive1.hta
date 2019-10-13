@@ -1,0 +1,75 @@
+<HTML>
+    <HEAD>
+        <HTA:APPLICATION
+  APPLICATIONNAME="ecmd7_FT-SDrive"
+  ID="ecmd7_FT-SDrive"
+  VERSION="0.1"
+  BORDER="dialog"
+  BORDERSTYLE="static"
+  ICON="../img/iconFT1.ico"
+  SCROLL="auto"
+  SINGLEINSTANCE="yes"
+  WINDOWSTATE="maximize"
+  CONTEXTMENU="no"
+  NAVIGABLE="yes"
+  SELECTION="no"/>
+
+        <TITLE>ecmd7 formatting tool - Please select a drive</TITLE>
+
+        <SCRIPT language="Javascript">
+            function closeHTA(sendOutput){
+                if (sendOutput){
+                    (new ActiveXObject('Scripting.FileSystemObject'))
+                        .GetStandardStream(1)
+                        .WriteLine(
+                            document.getElementById('inputbox').value
+                        );
+                };
+                window.close();
+            }
+        </SCRIPT>
+        <SCRIPT language="vbscript">
+        Sub Create_new_account
+        Set objShell = CreateObject("WScript.Shell")
+        objShell.Run("Create_new_account.hta")
+        End Sub
+        </SCRIPT>
+    </HEAD>
+
+    <BODY> <center>
+<img src="../img/logoFT1.png">
+<p>Select drive to format into an ECMD7-compatible drive:</p>
+
+<SELECT id = "inputbox" >
+<OPTION VALUE="A:">drive A</OPTION>
+<OPTION VALUE="B:">drive B</OPTION>
+<OPTION VALUE="C:" DISABLED>drive C</OPTION>
+<OPTION VALUE="D:">drive D</OPTION>
+<OPTION VALUE="E:">drive E</OPTION>
+<OPTION VALUE="F:">drive F</OPTION>
+<OPTION VALUE="G:">drive G</OPTION>
+<OPTION VALUE="H:">drive H</OPTION>
+<OPTION VALUE="I:">drive I</OPTION>
+<OPTION VALUE="J:">drive J</OPTION>
+<OPTION VALUE="K:">drive K</OPTION>
+<OPTION VALUE="L:">drive L</OPTION>
+<OPTION VALUE="M:">drive M</OPTION>
+<OPTION VALUE="N:">drive N</OPTION>
+<OPTION VALUE="O:">drive O</OPTION>
+<OPTION VALUE="P:">drive P</OPTION>
+<OPTION VALUE="Q:">drive Q</OPTION>
+<OPTION VALUE="R:">drive R</OPTION>
+<OPTION VALUE="S:">drive S</OPTION>
+<OPTION VALUE="T:">drive T</OPTION>
+<OPTION VALUE="U:">drive U</OPTION>
+<OPTION VALUE="V:">drive V</OPTION>
+<OPTION VALUE="W:">drive W</OPTION>
+<OPTION VALUE="X:">drive X</OPTION>
+<OPTION VALUE="Y:">drive Y</OPTION>
+<OPTION VALUE="Z:">drive Z</OPTION>
+</SELECT>
+<p><font color="Red">Warning: If you continue, all data on this drive will be lost!</font></p>
+<button onclick="closeHTA(true);">Start formatting</button><br>
+</center></BODY>
+
+</HTML>
