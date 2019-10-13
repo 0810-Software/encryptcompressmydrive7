@@ -2,7 +2,7 @@
 :selectadrive
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Select.drive1.hta"') do set drive=%%a
 if not exist "%drive%" (
-start mshta "javascript:alert('This drive cannot be found.');window.close()"
+start /wait mshta "javascript:alert('This drive cannot be found.');window.close()"
 goto selectadrive
 )
 set "quickswitch="
@@ -13,5 +13,5 @@ format %DRIVE% /x /v:ecmd7 /fs:fat32 /y %quickswitch%
 CD /D %DRIVE%
 ECHO:>"\.clean"
 cd /d "%~dp0"
-start mshta "javascript:alert('Format of drive %drive% complete.');window.close()"
+start /wait mshta "javascript:alert('Format of drive %drive% complete.');window.close()"
 start /b cmd /c "%~dp0ecd7-launcher.cmd"
