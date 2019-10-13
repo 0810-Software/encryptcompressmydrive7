@@ -1,4 +1,4 @@
-![# EncrypCompressmyDrive7](https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/img/Logo3.png)
+![# EncryptCompressmyDrive7](https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/img/Logo3.png)
 
 Drive compression and encryption system based on 7-zip.
 
