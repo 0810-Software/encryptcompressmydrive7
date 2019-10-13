@@ -21,7 +21,7 @@ set "ecmdlocation7=%appdata%\ecmd7\%mountpointnumber7%"
 md "%ecmdlocation7%"
 md "%tmp%\ecmd7\%mountpointnumber7%"
 if exist "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" (
-    %~dp0bin\7za X "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"  -t7z -o"%ecmdlocation7%\" -p%Upw7% -w"%tmp%\ecmd7\%mountpointnumber7%"
+    %~dp0bin\7za X "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"  -t7z -o"%ecmdlocation7%\" -p"%Upw7%" -w"%tmp%\ecmd7\%mountpointnumber7%"
 )
 if exist "%ecmdrive7%\.clean" (
     del /f /q "%ecmdrive7%\.clean"
