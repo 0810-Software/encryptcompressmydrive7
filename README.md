@@ -1,5 +1,6 @@
-# encryptcompressmydrive7
- Drive compression and encryption system based on 7-zip.
+![# EncrypCompressmyDrive7](https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/img/Logo3.png)
+
+Drive compression and encryption system based on 7-zip.
 
 
 
