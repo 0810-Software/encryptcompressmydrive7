@@ -12,6 +12,7 @@ if exist "%ecmdrive7%\.clean" goto clean
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.hta"') do set Uname7=%%a
 if not exist "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" (
     FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
+    If "%Upw7%"=="" goto start
 ) ELSE (
     FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.hta"') do set Upw7=%%a
 )
