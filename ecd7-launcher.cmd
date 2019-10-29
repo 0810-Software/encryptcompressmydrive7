@@ -1,4 +1,5 @@
 @powershell -window hidden -command ""
+start "" "ecd7-updater.cmd"
 :search
 for %%p in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do if  exist %%p:\.ecmd.7 (
 set ecmdrive7=%%p:
