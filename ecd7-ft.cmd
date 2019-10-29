@@ -1,4 +1,8 @@
 @powershell -window hidden -command ""
+set /a ft7sessionnumber=(%RANDOM%*500/32768)+1
+md "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp"
+cd /d "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp"
+set "restorewd=cd /d %tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp"
 :selectadrive
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Select.drive1.hta"') do set drive=%%a
 if not exist "%drive%" (
