@@ -28,19 +28,13 @@
                 window.close();
             }
         </SCRIPT>
-        <SCRIPT language="vbscript">
-        Sub Create_new_account
-        Set objShell = CreateObject("WScript.Shell")
-        objShell.Run("Create_new_account.hta")
-        End Sub
-        </SCRIPT>
     </HEAD>
 
     <BODY> <center>
 <img src="../img/logo1.png">
 <p>Please enter your username:</p>
 <input type="text" id = "inputbox" rows = "4" cols = "36" placeholder="John Doe" class = "valid"><button onclick="closeHTA(true);">Continue</button><br>
-<button onclick="Create_new_account()">Create new account</button>
+<button onclick="javascript:alert('Just enter the new credentials here, the system auto-detects new accounts.')">Create new account</button>
 </center></BODY>
 
 </HTML>
