@@ -10,6 +10,7 @@ set /p "currentversion="<"ecmversion.txt"
 if not "%latestversion%"=="%currentversion%" call :updateprogram
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
+@powershell -window hidden -command ""
 set "ecmdrive7="
 set /a loop+=1
 set /p "latest_ecmdriveversion="<"%cd%\latest_ecmdriveversion.txt"
