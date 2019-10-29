@@ -7,8 +7,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{70FF6811-4AE4-4198-A69B-10EFB736ACA6}
 AppName=EncryptCompressMyDrive7 Program
-AppVersion=0.0.0.1-beta
-;AppVerName=EncryptCompressMyDrive7 Program 0.0.0.0-beta
+AppVersion=0.0.0.2-beta
+;AppVerName=EncryptCompressMyDrive7 Program 0.0.0.2-beta
 AppPublisher=Marnix 0810
 AppPublisherURL=https://marnix0810.github.io/encryptcompressmydrive7/
 AppSupportURL=https://marnix0810.github.io/encryptcompressmydrive7/
@@ -32,7 +32,4 @@ Name: "{group}\{cm:UninstallProgram,EncryptCompressMyDrive7 Program}"; Filename:
 Name: "{autoprograms}\ecd7 formatting tool"; Filename: "{app}\ecd7-ft.cmd"
 
 [Registry]
-Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ecd7-launch"; ValueData: "{app}\ecd7-launcher.cmd"; Flags: createvalueifdoesntexist; Tasks: AutoRunRegistry;
-
-[Tasks]
-Name: "AutoRunRegistry"; Description: "Make sure the ecd7-driver runs at startup (required for it to work)"
+Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ecd7-launch"; ValueData: "{app}\ecd7-launcher.cmd"; Flags: createvalueifdoesntexist;
