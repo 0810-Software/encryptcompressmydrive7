@@ -44,7 +44,7 @@ start explorer "%Mounttovolume7%"
 ren %ecmdrive7%\.ecmd.7 .ecmd.8
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%Mounttovolume7%\Logoff, unmount and write data to drive.lnk');$s.TargetPath='%~dp0ecd7-unmount.cmd';$s.Save()"
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%ecmdrive7%\Logoff, unmount and write data to drive.lnk');$s.TargetPath='%~dp0ecd7-unmount.cmd';$s.Save()"
-exit
+goto search
 :clean
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.clean1.hta"') do set Uname7=%%a
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
