@@ -1,4 +1,4 @@
-REM @powershell -window hidden -command ""
+@powershell -window hidden -command ""
 set /a u7sessionnumber=(%RANDOM%*500/32768)+1
 md "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 cd /d "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
@@ -8,11 +8,10 @@ powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.gi
 set /p "latestversion="<"latest_ecmversion.txt"
 set /p "currentversion="<"ecmversion.txt"
 if not "%latestversion%"=="%currentversion%" call :updateprogram
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
 set "ecmdrive7="
 set /a loop+=1
-:definition_update
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 set /p "latest_ecmdriveversion="<"%cd%\latest_ecmdriveversion.txt"
 for %%p in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do if exist %%p:\ecmdriveversion.txt (
 call :checkdver %%p
