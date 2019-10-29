@@ -8,7 +8,7 @@ goto selectadrive
 set "quickswitch="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Quickswitchmenu1.hta"') do set quick=%%a
 if "%quick%"=="1" set quickswitch=/q
-format %DRIVE% /x /v:ecmd7 /fs:fat32 /y %quickswitch%
+format %DRIVE% /x /v:ecmd7 /fs:exFAT /y %quickswitch%
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/Marnix0810/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
 %~dp0bin\7za X "%~dp0ecd7-fs_latest.7z" -o"%drive%\"
 CD /D %DRIVE%
