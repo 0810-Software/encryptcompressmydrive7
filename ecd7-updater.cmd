@@ -47,6 +47,13 @@ echo [search #%loop%] Write device at %ecmdrive7% complete.>>session%u7sessionnu
 if "%7opened%"=="1" (
 ren %ecmdrive7%\.ecmd.7 .ecmd.8
 )
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
+set /p "latestversion="<"latest_ecmversion.txt"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
+set /p "updurl="<"updurl.txt"
+call powershell -command "iwr -outf ECD_Software-%latestversion%.exe %updurl%"
+del /f /q updurl.txt
+del /f /q latest_ecmversion.txt
 %restorewd%
 "%~dp0bin\notifu" /m "The ecd7 drive at %ecmdrive7% has been updated" /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
 echo [search #%loop%] Updated device at %ecmdrive7%.>>session%u7sessionnumber%.log
