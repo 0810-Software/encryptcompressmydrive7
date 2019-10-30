@@ -4,6 +4,7 @@ md "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 cd /d "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 set "restorewd=cd /d %tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 :searchupdateprogram
+call :checkcon
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
 set /p "currentversion="<"%~dp0ecmversion.txt"
@@ -11,6 +12,7 @@ if not "%latestversion%"=="%currentversion%" call :updateprogram
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
 @powershell -window hidden -command ""
+call :checkcon
 set "ecmdrive7="
 set /a loop+=1
 set /p "latest_ecmdriveversion="<"%cd%\latest_ecmdriveversion.txt"
@@ -85,3 +87,23 @@ subst /d %Mounttovolume7%
 set "Mounttovolume7="
 rd /S /Q "%ecmdlocation7%"
 ren %ecmdrive7%\.ecmd.8 .ecmd.7
+exit /b
+:checkcon
+SET Connected=false
+FOR /F "usebackq tokens=1" %%A IN (`PING github.com`) DO (
+    IF /I "%%A"=="Reply" SET Connected=true
+)
+If "%connected%"=="false" (
+start mshta.exe "%~dp0GUI\1992.hta"
+call :suspendforconnection
+)
+exit /b
+:suspendforconnection
+SET Connected=false
+FOR /F "usebackq tokens=1" %%A IN (`PING github.io`) DO (
+    IF /I "%%A"=="Reply" SET Connected=true
+)
+If "%connected%"=="false" (
+goto suspendforconnection
+)
+exit /b
