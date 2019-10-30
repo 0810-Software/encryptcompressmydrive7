@@ -1,5 +1,6 @@
 @powershell -window hidden -command ""
 :search
+set "ecmdrive7="
 for %%p in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do if  exist %%p:\.ecmd.8 (
 set ecmdrive7=%%p:
 goto start
@@ -13,7 +14,7 @@ del /f /q "%ecmdrive7%\ecd7db.files\sav.ecd7db"
 del /f /q  "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"
 cd /d "%ecmdlocation7%"
 md "%tmp%\ecmd7\%mountpointnumber7%"
-%~dp0bin\7za a "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" * -t7z -r -mhe -sdel -w"%tmp%\ecmd7\%mountpointnumber7%" -p"%Upw7%"
+"%~dp0bin\7za" a "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" * -t7z -r -mhe -sdel -w"%tmp%\ecmd7\%mountpointnumber7%" -p"%Upw7%"
 cd /d "%~dp0"
 subst /d %Mounttovolume7%
 set "Mounttovolume7="
