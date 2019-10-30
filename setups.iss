@@ -20,8 +20,10 @@ OutputDir=C:\Users\marni\Downloads
 OutputBaseFilename=ecd7-setup
 SetupIconFile=C:\Users\marni\Documents\GitHub\encryptcompressmydrive7\img\Icon1.ico
 Compression=lzma
+WizardStyle=modern
+WizardImageFile=C:\Users\marni\Documents\GitHub\encryptcompressmydrive7\img\Setupbitmap1.bmp
 SolidCompression=yes
-
+AlwaysRestart=yes
 [Files]
 Source: "C:\Users\marni\Documents\GitHub\encryptcompressmydrive7\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
