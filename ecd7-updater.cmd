@@ -25,8 +25,7 @@ echo [search #%loop%] Unupdated device %ecmdrive7% found>>session%u7sessionnumbe
 :start
 "%~dp0bin\notifu" /m "The ecd7 drive at  is %ecmdrive7% being updated..." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 2000
 cd %ecmdrive7% /D
-if exist "%ecmdrive7%\.ecmd.7" set 7opened=0
-if exist "%ecmdrive7%\.ecmd.8" set 7opened=1
+if exist "%ecmdrive7%\.ecmd.8" call :unmountforupdate
 del /f /q "%ecmdrive7%\.ecmd.?"
 echo [search #%loop%] Unupdated device %ecmdrive7% locked from opening or closing.>>session%u7sessionnumber%.log
 %restorewd%
@@ -44,9 +43,6 @@ cd %ecmdrive7% /D
 echo [search #%loop%] Write device at %ecmdrive7% start.>>session%u7sessionnumber%.log
 "%~dp0bin\7za" X "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" -o"%ecmdrive7%\"
 echo [search #%loop%] Write device at %ecmdrive7% complete.>>session%u7sessionnumber%.log
-if "%7opened%"=="1" (
-ren %ecmdrive7%\.ecmd.7 .ecmd.8
-)
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
@@ -76,3 +72,16 @@ set /p "updurl="<"updurl.txt"
 call powershell -command "iwr -outf ECD-program_update.exe %updurl%"
 start /wait ECD-program_update.exe
 exit /b
+
+:unmountforupdate
+FOR /F "usebackq tokens=1,2* delims=," %%G IN ("%ecmdrive7%\ecd7db.files\sav.ecd7db") DO SET %%G
+del /f /q "%ecmdrive7%\ecd7db.files\sav.ecd7db"
+del /f /q  "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"
+cd /d "%ecmdlocation7%"
+md "%tmp%\ecmd7\%mountpointnumber7%"
+"%~dp0bin\7za" a "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" * -t7z -r -mhe -sdel -w"%tmp%\ecmd7\%mountpointnumber7%" -p"%Upw7%"
+cd /d "%~dp0"
+subst /d %Mounttovolume7%
+set "Mounttovolume7="
+rd /S /Q "%ecmdlocation7%"
+ren %ecmdrive7%\.ecmd.8 .ecmd.7
