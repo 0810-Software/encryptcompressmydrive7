@@ -69,8 +69,8 @@ exit /b
 "%~dp0bin\notifu" /m "The ecd7 program is downloading updates..." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
 set /p "updurl="<"updurl.txt"
-call powershell -command "iwr -outf ECD-program_update.exe %updurl%"
-start /wait ECD-program_update.exe
+call powershell -command "iwr -outf ECD-update.exe %updurl%"
+start /wait ECD-update.exe
 exit /b
 
 :unmountforupdate
