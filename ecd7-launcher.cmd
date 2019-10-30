@@ -11,12 +11,12 @@ goto search
 )
 :start
 if exist "%ecmdrive7%\.clean" goto clean
-FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.hta"') do set Uname7=%%a
+call :userinput_25617
 if not exist "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" (
-    FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
+    call :userinput_25616
     If "%Upw7%"=="" goto start
 ) ELSE (
-    FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.hta"') do set Upw7=%%a
+    call :userinput_1978
 )
 :create
 set /a mountpointnumber7=%random%+1
@@ -48,6 +48,26 @@ powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%Mounttovolume7%\
 powershell "$s=(New-Object -COM WScript.Shell).CreateShortcut('%ecmdrive7%\Logoff, unmount and write data to drive.lnk');$s.TargetPath='%~dp0ecd7-unmount.cmd';$s.Save()"
 goto search
 :clean
-FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.clean1.hta"') do set Uname7=%%a
-FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
+call :userinput_89028
+call :userinput_25616
 goto create
+
+:userinput_89028
+set "Uname7="
+FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.clean1.hta"') do set Uname7=%%a
+if "%Uname7%"=="" goto :userinput_89028
+
+:userinput_25617
+set "Uname7="
+FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.hta"') do set Uname7=%%a
+if "%Uname7%"=="" goto :userinput_25617
+
+:userinput_25616
+set "Upw7="
+FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
+if "%Upw7%"=="" goto :userinput_25616
+
+:userinput_1978
+set "Upw7="
+FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.hta"') do set Upw7=%%a
+if "%Upw7%"=="" goto :userinput_1978
