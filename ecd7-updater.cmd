@@ -6,7 +6,7 @@ set "restorewd=cd /d %tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 :searchupdateprogram
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
-set /p "currentversion="<"ecmversion.txt"
+set /p "currentversion="<"%~dp0ecmversion.txt"
 if not "%latestversion%"=="%currentversion%" call :updateprogram
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
