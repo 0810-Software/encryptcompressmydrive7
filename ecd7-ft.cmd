@@ -5,6 +5,7 @@ cd /d "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp"
 set "restorewd=cd /d %tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp"
 :selectadrive
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Select.drive1.hta"') do set drive=%%a
+if "%drive%"=="" exit
 if not exist "%drive%" (
 start /wait mshta "javascript:alert('This drive cannot be found.');window.close()"
 goto selectadrive
