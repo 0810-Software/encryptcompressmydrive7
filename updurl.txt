@@ -1,1 +1,1 @@
-https://github.com/Marnix0810/encryptcompressmydrive7/releases/download/v0.0.1.3-beta/ecd7-setup.exe
+https://github.com/Marnix0810/encryptcompressmydrive7/releases/download/v0.0.1.4-beta/ecd7-setup.exe
