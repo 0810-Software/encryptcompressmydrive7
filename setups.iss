@@ -31,7 +31,7 @@ Source: "C:\Users\marni\Documents\GitHub\encryptcompressmydrive7\*"; DestDir: "{
 [Icons]
 Name: "{group}\{cm:ProgramOnTheWeb,EncryptCompressMyDrive7 Program}"; Filename: "https://marnix0810.github.io/encryptcompressmydrive7/"
 Name: "{group}\{cm:UninstallProgram,EncryptCompressMyDrive7 Program}"; Filename: "{uninstallexe}"
-Name: "{autoprograms}\ecd7 formatting tool"; Filename: "{app}\ecd7-ft.cmd"
+Name: "{group}\ecd7 formatting tool"; Filename: "{app}\ecd7-ft.cmd"
 
 [Registry]
 Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ecd7-launch"; ValueData: "{app}\ecd7-launcher.cmd"; Flags: createvalueifdoesntexist;
