@@ -11,7 +11,9 @@ start /wait mshta "javascript:alert('This drive cannot be found.');window.close(
 goto selectadrive
 )
 set "quickswitch="
+set "quick="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Quickswitchmenu1.hta"') do set quick=%%a
+if "%quick%"=="" exit
 if "%quick%"=="1" set quickswitch=/q
 format %DRIVE% /x /v:ecmd7 /fs:exFAT /y %quickswitch%
 call :checkcon
