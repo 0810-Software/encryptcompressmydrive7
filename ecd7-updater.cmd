@@ -5,6 +5,8 @@ cd /d "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 set "restorewd=cd /d %tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 :searchupdateprogram
 call :checkcon
+call :checkisadmin
+if "%isadmin%"=="n" goto search
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
 set /p "currentversion="<"%~dp0ecmversion.txt"
@@ -106,4 +108,19 @@ FOR /F "usebackq tokens=1" %%A IN (`PING github.io`) DO (
 If "%connected%"=="false" (
 goto suspendforconnection
 )
+exit /b
+:checkisadmin
+setlocal EnableDelayedExpansion
+set user=%username%
+net user %user% | find "Local Group Memberships">temp.tmp
+for /f %%a in ('findstr /i "Administrators" temp.tmp') do (
+    set isadmin=y
+    del temp.tmp
+    goto checkisadminR
+)
+set isadmin=n
+del temp.tmp
+pause
+goto checkisadminR
+:checkisadminR
 exit /b
