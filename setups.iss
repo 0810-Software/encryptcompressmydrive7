@@ -7,8 +7,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{70FF6811-4AE4-4198-A69B-10EFB736ACA6}
 AppName=EncryptCompressMyDrive7 Software
-AppVersion=v0.0.1.5-beta
-;AppVerName=EncryptCompressMyDrive7 Program v0.0.1.5-beta
+AppVersion=v0.1.1.0-beta
+;AppVerName=EncryptCompressMyDrive7 Program v0.1.1.0-beta
 AppPublisher=Marnix 0810
 AppPublisherURL=https://marnix0810.wordpress.com/
 AppSupportURL=https://github.com/0810-software/encryptcompressmydrive7/issues
