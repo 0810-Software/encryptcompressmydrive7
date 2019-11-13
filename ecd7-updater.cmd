@@ -7,11 +7,11 @@ set "restorewd=cd /d %tmp%\ecd7-updatetool_%u7sessionnumber%.tmp"
 call :checkcon
 call :checkisadmin
 if "%isadmin%"=="n" goto search
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
 set /p "currentversion="<"%~dp0ecmversion.txt"
 if not "%latestversion%"=="%currentversion%" call :updateprogram
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
 @powershell -window hidden -command ""
 call :checkcon
@@ -33,7 +33,7 @@ if exist "%ecmdrive7%\.ecmd.8" call :unmountforupdate
 del /f /q "%ecmdrive7%\.ecmd.?"
 echo [search #%loop%] Unupdated device %ecmdrive7% locked from opening or closing.>>session%u7sessionnumber%.log
 %restorewd%
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/Marnix0810/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-software/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
 echo [search #%loop%] Downloaded image for unupdated device %ecmdrive7%>>session%u7sessionnumber%.log
 cd %ecmdrive7% /D
 "%~dp0bin\7za" a "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" "%ecmdrive7%\ecd7db.files" -r
@@ -47,9 +47,9 @@ cd %ecmdrive7% /D
 echo [search #%loop%] Write device at %ecmdrive7% start.>>session%u7sessionnumber%.log
 "%~dp0bin\7za" X "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" -o"%ecmdrive7%\"
 echo [search #%loop%] Write device at %ecmdrive7% complete.>>session%u7sessionnumber%.log
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
 set /p "updurl="<"updurl.txt"
 call powershell -command "iwr -outf ECD_Software-%latestversion%.exe %updurl%"
 del /f /q updurl.txt
@@ -71,7 +71,7 @@ exit /b
 
 :updateprogram
 "%~dp0bin\notifu" /m "The ecd7 program is downloading updates..." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
 set /p "updurl="<"updurl.txt"
 call powershell -command "iwr -outf ECD-update.exe %updurl%"
 start /wait ECD-update.exe

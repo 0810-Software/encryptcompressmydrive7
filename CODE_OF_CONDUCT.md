@@ -1,4 +1,4 @@
-<center><img alt="EncryptCompressmyDrive7" src="https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/img/Logo3.png"></center>
+<center><img alt="EncryptCompressmyDrive7" src="https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/img/Logo3.png"></center>
 
 # Contributor Covenant Code of Conduct
 

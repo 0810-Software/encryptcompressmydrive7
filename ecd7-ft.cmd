@@ -17,12 +17,12 @@ if "%quick%"=="" exit
 if "%quick%"=="1" set quickswitch=/q
 format %DRIVE% /x /v:ecmd7 /fs:exFAT /y %quickswitch%
 call :checkcon
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/Marnix0810/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-software/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
 CD /D %DRIVE%
 "%~dp0bin\7za" X "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp\ecd7-fs_latest.7z" -o"%drive%\"
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/Marnix0810/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
 set /p "updurl="<"updurl.txt"
 call powershell -command "iwr -outf ECD_Software-%latestversion%.exe %updurl%"
 del /f /q updurl.txt
