@@ -60,8 +60,10 @@ if "%Uname7%"=="" goto :userinput_89028
 :userinput_25617
 set "Uname7="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.hta"') do set Uname7=%%a
-if "%Uname7%"=="" goto :userinput_25617
-
+if "%Uname7%"=="" (
+timeout /t 30
+goto search
+)
 :userinput_25616
 set "Upw7="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
