@@ -24,7 +24,7 @@ set "ecmdlocation7=%appdata%\ecmd7\%mountpointnumber7%"
 md "%ecmdlocation7%"
 md "%tmp%\ecmd7\%mountpointnumber7%"
 if exist "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7" (
-    "%~dp0bin\7za" X "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"  -t7z -o"%ecmdlocation7%\" -p"%Upw7%" -w"%tmp%\ecmd7\%mountpointnumber7%"
+call :948372863
 )
 if exist "%ecmdrive7%\.clean" (
     del /f /q "%ecmdrive7%\.clean"
@@ -55,7 +55,10 @@ goto create
 :userinput_89028
 set "Uname7="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Username.clean1.hta"') do set Uname7=%%a
-if "%Uname7%"=="" goto :userinput_89028
+if "%Uname7%"=="" (
+timeout /t 30
+goto search
+)
 
 :userinput_25617
 set "Uname7="
@@ -64,12 +67,23 @@ if "%Uname7%"=="" (
 timeout /t 30
 goto search
 )
+exit /b
 :userinput_25616
 set "Upw7="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.clean1.hta"') do set Upw7=%%a
 if "%Upw7%"=="" goto :userinput_25616
+exit /b
 
 :userinput_1978
 set "Upw7="
 FOR /f "delims=" %%a in ('mshta.exe "%~dp0GUI\Password.hta"') do set Upw7=%%a
 if "%Upw7%"=="" goto :userinput_1978
+exit /b
+
+:948372863
+"%~dp0bin\7za" X "%ecmdrive7%\ecmd7.files\%Uname7%.ecmd7"  -t7z -o"%ecmdlocation7%\" -p"%Upw7%" -w"%tmp%\ecmd7\%mountpointnumber7%" || (
+"%~dp0bin\notifu" /m "Your ECD7 drive is expireincing problems. Password typo? please remount drive and try again." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
+timeout /t 30
+goto search
+)
+exit /b
