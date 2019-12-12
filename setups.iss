@@ -29,9 +29,9 @@ Source: "C:\Users\marni\Documents\GitHub\encryptcompressmydrive7\*"; DestDir: "{
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{cm:ProgramOnTheWeb,EncryptCompressMyDrive7 Program}"; Filename: "https://marnix0810.github.io/encryptcompressmydrive7/"
+Name: "{group}\{cm:ProgramOnTheWeb,EncryptCompressMyDrive7 Program}"; Filename: "https://software0810.wordpress.com/products/encryptcompressmydrive7/"
 Name: "{group}\{cm:UninstallProgram,EncryptCompressMyDrive7 Program}"; Filename: "{uninstallexe}"
 Name: "{group}\ecd7 formatting tool"; Filename: "{app}\ecd7-ft.cmd"
 
 [Registry]
-Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ecd7-launch"; ValueData: "{app}\ecd7-launcher.cmd"; Flags: createvalueifdoesntexist;
+Root: "HKLM"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "ecd7-driverlaunch"; ValueData: "{app}\ecd7-launcher.cmd"; Flags: createvalueifdoesntexist;
