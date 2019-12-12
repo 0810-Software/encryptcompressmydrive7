@@ -4,8 +4,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{70FF6811-4AE4-4198-A69B-10EFB736ACA6}
 AppName=EncryptCompressMyDrive7 Software
-AppVersion=v0.1.1.1-beta
-;AppVerName=EncryptCompressMyDrive7 Program v0.1.1.0-beta
+AppVersion=v0.1.2.0-beta
+;AppVerName=EncryptCompressMyDrive7 Program v0.1.2.0-beta
 AppPublisher=0810 Software
 AppPublisherURL=https://software0810.wordpress.com/
 AppSupportURL=https://github.com/0810-software/encryptcompressmydrive7/issues
