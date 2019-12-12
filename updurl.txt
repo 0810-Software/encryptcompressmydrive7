@@ -1,1 +1,1 @@
-https://github.com/0810-Software/encryptcompressmydrive7/releases/download/v0.1.1.1-beta/ecd7-setup.exe
+https://github.com/0810-Software/encryptcompressmydrive7/releases/download/v0.1.2.0-beta/ecd7-setup.exe
