@@ -11,7 +11,7 @@ powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.gi
 set /p "latestversion="<"latest_ecmversion.txt"
 set /p "currentversion="<"%~dp0ecmversion.txt"
 if not "%latestversion%"=="%currentversion%" call :updateprogram
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/files/latest_ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-Software/ECD7-FSImages/master/ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
 :search
 @powershell -window hidden -command ""
 call :checkcon
@@ -33,11 +33,11 @@ if exist "%ecmdrive7%\.ecmd.8" call :unmountforupdate
 del /f /q "%ecmdrive7%\.ecmd.?"
 echo [search #%loop%] Unupdated device %ecmdrive7% locked from opening or closing.>>session%u7sessionnumber%.log
 %restorewd%
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-software/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-Software/ECD7-FSImages/archive/%latest_ecmdriveversion%.zip', 'ecd7-fs_latest.zip') }"
 echo [search #%loop%] Downloaded image for unupdated device %ecmdrive7%>>session%u7sessionnumber%.log
 cd %ecmdrive7% /D
-"%~dp0bin\7za" a "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" "%ecmdrive7%\ecd7db.files" -r
-"%~dp0bin\7za" a "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" "%ecmdrive7%\ecmd7.files" -r
+"%~dp0bin\7za" a "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.zip" "%ecmdrive7%\ecd7db.files" -r
+"%~dp0bin\7za" a "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.zip" "%ecmdrive7%\ecmd7.files" -r
 %restorewd%
 echo [search #%loop%] Backed up device at %ecmdrive7%.>>session%u7sessionnumber%.log
 echo [search #%loop%] Format device at %ecmdrive7% start.>>session%u7sessionnumber%.log
@@ -45,7 +45,7 @@ format %ecmdrive7% /x /v:ecmd7 /fs:exFAT /y /q
 echo [search #%loop%] Format device at %ecmdrive7% complete.>>session%u7sessionnumber%.log
 cd %ecmdrive7% /D
 echo [search #%loop%] Write device at %ecmdrive7% start.>>session%u7sessionnumber%.log
-"%~dp0bin\7za" X "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.7z" -o"%ecmdrive7%\"
+"%~dp0bin\7za" X "%tmp%\ecd7-updatetool_%u7sessionnumber%.tmp\ecd7-fs_latest.zip" -o"%ecmdrive7%\"
 echo [search #%loop%] Write device at %ecmdrive7% complete.>>session%u7sessionnumber%.log
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"

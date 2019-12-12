@@ -17,9 +17,11 @@ if "%quick%"=="" exit
 if "%quick%"=="1" set quickswitch=/q
 format %DRIVE% /x /v:ecmd7 /fs:exFAT /y %quickswitch%
 call :checkcon
-powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-software/encryptcompressmydrive7/raw/master/files/ecd7-fs.7z', 'ecd7-fs_latest.7z') }"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-Software/ECD7-FSImages/master/ecmdriveversion.txt', 'latest_ecmdriveversion.txt') }"
+set /p "latest_ecmdriveversion="<"%cd%\latest_ecmdriveversion.txt"
+powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://github.com/0810-Software/ECD7-FSImages/archive/%latest_ecmdriveversion%.zip', 'ecd7-fs_latest.zip') }"
 CD /D %DRIVE%
-"%~dp0bin\7za" X "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp\ecd7-fs_latest.7z" -o"%drive%\"
+"%~dp0bin\7za" X "%tmp%\ecd7-formattingtool_%ft7sessionnumber%.tmp\ecd7-fs_latest.zip" -o"%drive%\"
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/ecmversion.txt', 'latest_ecmversion.txt') }"
 set /p "latestversion="<"latest_ecmversion.txt"
 powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/updurl.txt', 'updurl.txt') }"
