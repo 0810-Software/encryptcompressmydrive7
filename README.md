@@ -17,7 +17,7 @@ But in detail, the system creates a `.ecmd7`-file with a file name based on the 
 
 It is save, but probably not uncrackable. Of course nothing is 'fully' save, but I will warn you if there is anything wrong. The encryption in <img src="https://raw.githubusercontent.com/0810-software/encryptcompressmydrive7/master/img/Logo4.png" alt="EncryptCompressmyDrive7" height="20" /> is based on 7z encryption, which has shown great results for the past years. Of course you are advised to pick a strong password, this will make it lots harder to crack your data.
 
-If you follow [this group](https://groups.google.com/forum/#!forum/encryptcompressmydrive7), I can warn you on security updates, etc. [You can also find it at Telegram](https://t.me/EncryptCompressmyDrive7) 
+If you follow [this group](https://groups.google.com/forum/#!forum/encryptcompressmydrive7), I can warn you on security updates, etc. [You can also find it at Telegram](https://t.me/EncryptCompressmyDrive7).
 
 ### How to contribute?
 
