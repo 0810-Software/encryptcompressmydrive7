@@ -19,5 +19,5 @@ cd /d "%~dp0"
 subst /d %Mounttovolume7%
 set "Mounttovolume7="
 rd /S /Q "%ecmdlocation7%"
-ren %ecmdrive7%\.ecmd.8 .ecmd.7
+ren %ecmdrive7%\.ecmd.8 .ecmd.9
 start /wait mshta "javascript:alert('You can now use Safe Eject to eject %ecmdrive7%.');window.close()"
