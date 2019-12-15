@@ -2,6 +2,14 @@
 start "" "%~dp0ecd7-updater.cmd"
 :search
 set "ecmdrive7="
+:search.unlock
+for %%p in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do if  exist %%p:\.ecmd.9 (
+"%~dp0bin\notifu" /m "Remounting your drive in 15 seconds..." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
+timeout /t 15
+ren %%p:\.ecmd.9 .ecmd.7
+"%~dp0bin\notifu" /m "Please log back in to your ECMD7 drive." /t info /i "%~dp0img\Icon2.ico" /p "EncryptCompressMyDrive7 Updates" /d 0
+)
+:search.main
 for %%p in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do if  exist %%p:\.ecmd.7 (
 set ecmdrive7=%%p:
 goto start
