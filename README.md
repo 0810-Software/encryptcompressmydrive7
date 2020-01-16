@@ -21,4 +21,4 @@ If you follow [this group](https://groups.google.com/forum/#!forum/encryptcompre
 
 ### How to contribute?
 
-To contribute to the code, you just need to propose changes using a [pull request](https://help.github.com/articles/creating-a-pull-request/), I will add more specific info on this in the file [contribute.md](https://github.com/0810-software/encryptcompressmydrive7/blob/master/contribute.md).
+To contribute to the code, you just need to propose changes using a [pull request](https://help.github.com/articles/creating-a-pull-request/), I will add more specific info on this in the file [CONTRIBUTNG.MD](https://github.com/0810-software/encryptcompressmydrive7/blob/master/CONTRIBUTNG.MD).
